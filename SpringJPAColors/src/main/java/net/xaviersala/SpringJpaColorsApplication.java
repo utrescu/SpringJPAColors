@@ -43,5 +43,12 @@ public class SpringJpaColorsApplication implements CommandLineRunner{
       }
       
       
+      System.out.println("\n\n ... Cercant colors que acaben en 'o' en castellà");
+      List<Color> castellanO = (List<Color>) colorsRepository.findByCastellaEndsWith("o");
+      
+      for(Color c: castellanO) {
+        System.out.println("Color: " + c);
+      }
+      
     }
 }

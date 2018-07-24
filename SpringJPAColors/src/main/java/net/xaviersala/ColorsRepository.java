@@ -1,7 +1,9 @@
 package net.xaviersala;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 
 public interface ColorsRepository extends CrudRepository<Color, Long> {
@@ -12,5 +14,8 @@ public interface ColorsRepository extends CrudRepository<Color, Long> {
    * @return Entitat Color amb les dades
    */
   Color findByCatala(String nom);
+  
+  @Query("select u from Color u where u.castella like %?1")
+  List<Color> findByCastellaEndsWith(String end);
 
 }
